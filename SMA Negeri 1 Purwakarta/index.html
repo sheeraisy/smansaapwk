@@ -1,0 +1,1329 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>SMA Negeri 1 Purwakarta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Young+Serif&display=swap" rel="stylesheet">
+<style>
+/* =====================================================
+   SMA NEGERI 1 PURWAKARTA - style.css
+   Warna utama: navy, putih, emas.
+   Untuk mengganti warna, ubah nilai di bagian :root.
+   ===================================================== */
+
+:root {
+  /* Warna */
+  --navy-950: #08142f;
+  --navy-900: #0c1d45;
+  --navy-800: #112a5e;
+  --navy-700: #1b3a7d;
+  --emas: #c9a24a;
+  --emas-terang: #e8cf85;
+  --putih: #ffffff;
+  --mist: #f2f4f9;
+  --garis: #dde2ee;
+  --teks: #17223d;
+  --teks-lembut: #55617f;
+
+  /* Font */
+  --font-judul: "Young Serif", Georgia, "Times New Roman", serif;
+  --font-isi: "Figtree", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --lebar: 1180px;
+  --radius: 14px;
+  --bayangan: 0 10px 30px rgba(12, 29, 69, 0.12);
+  color-scheme: light;
+}
+
+/* ---------- Dasar ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* Elemen dengan atribut hidden harus benar-benar tersembunyi */
+[hidden] { display: none !important; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+
+body {
+  margin: 0;
+  font-family: var(--font-isi);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--teks);
+  background: var(--putih);
+  overflow-x: hidden;
+}
+
+img { display: block; max-width: 100%; }
+h1, h2, h3 { font-family: var(--font-judul); font-weight: 400; line-height: 1.15; margin: 0; text-wrap: balance; }
+p { margin: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--emas); outline-offset: 3px; }
+
+.wadah {
+  width: 100%;
+  max-width: var(--lebar);
+  margin-inline: auto;
+  padding-inline: max(20px, env(safe-area-inset-left, 0px));
+}
+
+.lewati {
+  position: absolute; left: 12px; top: -60px; z-index: 200;
+  background: var(--emas); color: var(--navy-950); padding: 10px 16px; border-radius: 8px; font-weight: 600;
+}
+.lewati:focus { top: 12px; }
+
+/* ---------- Tombol ---------- */
+.tombol {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 0.85rem 1.7rem; border-radius: 999px;
+  font-weight: 600; font-size: 1rem; text-decoration: none; cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform .25s ease, background-color .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.tombol:hover { transform: translateY(-3px); }
+.tombol-emas { background: var(--emas); color: var(--navy-950); box-shadow: 0 8px 22px rgba(201, 162, 74, .35); }
+.tombol-emas:hover { background: var(--emas-terang); }
+.tombol-garis { border-color: rgba(255, 255, 255, .6); color: var(--putih); }
+.tombol-garis:hover { background: var(--putih); color: var(--navy-900); border-color: var(--putih); }
+
+.tombol-navy { background: var(--navy-900); color: var(--putih); }
+.tombol-navy:hover { background: var(--navy-700); }
+
+/* ---------- Navbar ---------- */
+.navbar {
+  position: fixed; inset: 0 0 auto 0; z-index: 100;
+  padding-top: env(safe-area-inset-top, 0px);
+  transition: background-color .3s ease, box-shadow .3s ease;
+}
+.navbar.menempel, .navbar.menu-buka {
+  background: rgba(8, 20, 47, .96);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, .25);
+  backdrop-filter: blur(8px);
+}
+.navbar-isi { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
+
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--putih); min-width: 0; }
+.brand img { width: 40px; height: auto; flex: none; }
+.brand-teks { display: flex; flex-direction: column; line-height: 1.2; min-width: 0; }
+.brand-teks strong { font-family: var(--font-judul); font-weight: 400; font-size: 1.05rem; white-space: nowrap; }
+.brand-teks small { color: var(--emas-terang); font-weight: 600; letter-spacing: .12em; font-size: .72rem; }
+
+.menu ul { display: flex; align-items: center; gap: 4px; }
+.menu a {
+  position: relative; display: block; padding: 8px 12px; border-radius: 8px;
+  color: rgba(255, 255, 255, .88); text-decoration: none; font-weight: 500; font-size: .95rem;
+  transition: color .2s ease, background-color .2s ease;
+}
+.menu a::after {
+  content: ""; position: absolute; left: 12px; right: 12px; bottom: 2px; height: 2px;
+  background: var(--emas); transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
+}
+.menu a:hover { color: var(--putih); }
+.menu a:hover::after, .menu a.aktif::after { transform: scaleX(1); }
+.menu a.aktif { color: var(--putih); }
+
+.menu-ppdb a {
+  margin-left: 8px; padding: 8px 18px; border-radius: 999px; font-weight: 700;
+  background: var(--emas); color: var(--navy-950);
+  transition: background-color .2s ease, transform .2s ease;
+}
+.menu-ppdb a::after { display: none; }
+.menu-ppdb a:hover { background: var(--emas-terang); color: var(--navy-950); transform: translateY(-2px); }
+.menu .menu-ppdb a, .menu .menu-ppdb a.aktif { color: var(--navy-950); }
+.footer-ppdb { color: var(--emas-terang); font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
+.footer-ppdb:hover { color: var(--putih); }
+
+.menu-tombol {
+  display: none; width: 44px; height: 44px; border: 0; background: transparent; cursor: pointer;
+  flex-direction: column; justify-content: center; align-items: center; gap: 5px; border-radius: 10px;
+}
+.menu-tombol span { width: 24px; height: 2px; background: var(--putih); border-radius: 2px; transition: transform .25s ease, opacity .25s ease; }
+.menu-buka .menu-tombol span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.menu-buka .menu-tombol span:nth-child(2) { opacity: 0; }
+.menu-buka .menu-tombol span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ---------- Hero ---------- */
+.hero {
+  position: relative; isolation: isolate; color: var(--putih); background: var(--navy-950);
+  padding-top: calc(72px + clamp(3rem, 7vw, 5.5rem));
+  overflow: hidden;
+}
+.hero-latar {
+  position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 24%;
+}
+.hero-lapisan {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(90deg, rgba(8, 20, 47, .95) 0%, rgba(8, 20, 47, .82) 45%, rgba(8, 20, 47, .5) 100%),
+    linear-gradient(0deg, rgba(8, 20, 47, .9) 0%, rgba(8, 20, 47, 0) 40%);
+}
+.hero-isi { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+.hero-logo { width: 84px; height: auto; margin-bottom: 1.4rem; filter: drop-shadow(0 6px 14px rgba(0, 0, 0, .4)); }
+.hero h1 { font-size: clamp(2.5rem, 5.6vw, 4.5rem); letter-spacing: -.01em; }
+.slogan {
+  margin-top: .9rem; font-family: var(--font-judul); font-size: clamp(1.4rem, 2.6vw, 2rem);
+  color: var(--emas-terang); display: flex; align-items: center; gap: 14px;
+}
+.slogan::before { content: ""; width: 44px; height: 2px; background: var(--emas); }
+.sambutan { margin-top: 1.4rem; max-width: 34rem; color: rgba(255, 255, 255, .86); font-size: 1.15rem; }
+.hero-tombol { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 14px; }
+
+.hero-foto { margin: 0; position: relative; }
+.hero-foto::before {
+  content: ""; position: absolute; inset: 18px -18px -18px 18px; border: 2px solid var(--emas); border-radius: var(--radius); z-index: -1;
+}
+.hero-foto img { width: 100%; height: auto; border-radius: var(--radius); box-shadow: 0 24px 60px rgba(0, 0, 0, .5); }
+.hero-foto figcaption {
+  position: absolute; inset: auto 0 0 0; padding: 2.2rem 1rem .8rem; border-radius: 0 0 var(--radius) var(--radius);
+  font-size: .9rem; font-weight: 500; color: var(--putih); background: linear-gradient(0deg, rgba(8, 20, 47, .85), rgba(8, 20, 47, 0));
+}
+
+.hero-fakta {
+  margin: clamp(2.5rem, 6vw, 4.5rem) 0 0; padding: 1.4rem 0 1.6rem;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+  border-top: 1px solid rgba(232, 207, 133, .45);
+}
+.hero-fakta div { display: flex; flex-direction: column-reverse; gap: 2px; }
+.hero-fakta dt { font-size: .9rem; color: rgba(255, 255, 255, .72); }
+.hero-fakta dd { margin: 0; font-family: var(--font-judul); font-size: clamp(1.2rem, 2.2vw, 1.65rem); color: var(--emas-terang); }
+
+/* ---------- Bagian umum ---------- */
+.bagian { padding-block: clamp(4rem, 8vw, 7rem); }
+.bagian-mist { background: var(--mist); }
+.bagian-navy { background: var(--navy-900); color: var(--putih); }
+.bagian-kepala { margin-bottom: clamp(2rem, 4vw, 3.25rem); max-width: 40rem; }
+.bagian-kepala h2 { font-size: clamp(2rem, 3.8vw, 2.9rem); color: var(--navy-900); }
+.bagian-navy .bagian-kepala h2 { color: var(--putih); }
+.bagian-navy .bagian-kepala p { color: rgba(255, 255, 255, .78); }
+.bagian-kepala h2::after { content: ""; display: block; width: 56px; height: 3px; background: var(--emas); margin-top: 1rem; border-radius: 2px; }
+.bagian-kepala p { margin-top: 1rem; color: var(--teks-lembut); }
+
+/* ---------- Profil ---------- */
+.profil-grid { display: grid; grid-template-columns: 340px 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+.profil-kiri { position: sticky; top: 96px; display: grid; gap: 18px; }
+.profil-foto { margin: 0; border-radius: var(--radius); overflow: hidden; background: var(--navy-800); box-shadow: var(--bayangan); position: relative; }
+.profil-foto img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 22%; }
+.profil-foto figcaption {
+  position: absolute; inset: auto 0 0 0; padding: 2rem 1.1rem .8rem; color: var(--putih); font-size: .9rem; font-weight: 500;
+  background: linear-gradient(0deg, rgba(8, 20, 47, .85), rgba(8, 20, 47, 0));
+}
+.identitas {
+  background: var(--navy-900); color: var(--putih);
+  border-radius: var(--radius); padding: 1.9rem; box-shadow: var(--bayangan);
+}
+.identitas h3, .sejarah h3 { font-size: 1.4rem; }
+.identitas h3 { color: var(--emas-terang); margin-bottom: 1.2rem; }
+.identitas dl { margin: 0; }
+.identitas dl div { padding: .85rem 0; border-top: 1px solid rgba(255, 255, 255, .14); }
+.identitas dt { font-size: .85rem; color: rgba(255, 255, 255, .62); }
+.identitas dd { margin: 2px 0 0; font-weight: 600; }
+
+.sejarah h3 { color: var(--navy-900); margin-bottom: 1.6rem; }
+.timeline { position: relative; padding-left: 34px; }
+.timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(var(--emas), var(--garis)); }
+.timeline > li { position: relative; padding-bottom: 1.9rem; }
+.timeline > li:last-child { padding-bottom: 0; }
+.timeline > li::before {
+  content: ""; position: absolute; left: -34px; top: 6px; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--putih); border: 3px solid var(--emas); box-shadow: 0 0 0 4px var(--putih);
+}
+.timeline time { display: block; font-family: var(--font-judul); font-size: 1.2rem; color: var(--navy-800); }
+.timeline p { margin-top: .3rem; color: var(--teks-lembut); max-width: 40rem; }
+.jurusan { margin-top: .9rem; display: flex; flex-wrap: wrap; gap: 10px; }
+.jurusan li { background: var(--mist); border: 1px solid var(--garis); border-radius: 10px; padding: .5rem .9rem; font-size: .95rem; }
+.jurusan b { display: block; color: var(--navy-800); font-size: .85rem; }
+
+/* Guru dan tenaga kependidikan */
+.tenaga { margin-top: clamp(3rem, 6vw, 5rem); display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.tenaga-kartu {
+  border: 1px solid var(--garis); border-radius: var(--radius); padding: 1.6rem 1.8rem;
+  display: flex; align-items: center; gap: 1.2rem; background: var(--putih);
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.tenaga-kartu:hover { transform: translateY(-4px); box-shadow: var(--bayangan); border-color: var(--emas); }
+.tenaga-angka { font-family: var(--font-judul); font-size: 2.6rem; line-height: 1; color: var(--navy-800); min-width: 3.2rem; }
+.tenaga-angka.kosong { color: var(--emas); }
+.tenaga-label strong { display: block; color: var(--navy-900); }
+.tenaga-label span { font-size: .9rem; color: var(--teks-lembut); }
+.tenaga-catatan { grid-column: 1 / -1; font-size: .9rem; color: var(--teks-lembut); }
+
+/* ---------- Visi dan Misi ---------- */
+.visimisi-grid { display: grid; grid-template-columns: 1fr 1.25fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+.visi, .misi h3 + ol { position: relative; }
+.visi h3, .misi h3 { font-size: 1.4rem; color: var(--emas-terang); margin-bottom: 1.2rem; }
+.visi { background: var(--navy-800); border-radius: var(--radius); padding: clamp(1.8rem, 4vw, 2.8rem); border-left: 4px solid var(--emas); }
+.visi blockquote { margin: 0; font-family: var(--font-judul); font-size: clamp(1.45rem, 2.6vw, 2rem); line-height: 1.35; }
+.misi ol { counter-reset: misi; display: grid; gap: 14px; }
+.misi li {
+  counter-increment: misi; position: relative; padding: 1.2rem 1.4rem 1.2rem 4.2rem;
+  background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .12); border-radius: var(--radius);
+  transition: transform .3s ease, background-color .3s ease, border-color .3s ease;
+}
+.misi li::before {
+  content: counter(misi); position: absolute; left: 1.2rem; top: 1rem; width: 2.2rem; height: 2.2rem; border-radius: 50%;
+  display: grid; place-items: center; background: var(--emas); color: var(--navy-950); font-weight: 700;
+}
+.misi li:hover { transform: translateX(6px); background: rgba(255, 255, 255, .1); border-color: var(--emas); }
+
+/* ---------- Kartu (fasilitas dan ekskul) ---------- */
+.kartu-grid { display: grid; gap: 22px; }
+.kartu-grid-3 { grid-template-columns: repeat(3, 1fr); }
+.kartu-grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+.kartu {
+  display: flex; flex-direction: column; background: var(--putih); border: 1px solid var(--garis);
+  border-radius: var(--radius); overflow: hidden;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.kartu:hover { transform: translateY(-6px); box-shadow: var(--bayangan); border-color: var(--emas); }
+.kartu-foto { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: var(--navy-800); }
+.kartu-foto > img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.kartu:hover .kartu-foto > img { transform: scale(1.06); }
+.kartu-isi { padding: 1.2rem 1.4rem 1.5rem; display: flex; flex-direction: column; gap: .5rem; flex: 1; }
+.kartu-isi h3 { font-size: 1.3rem; color: var(--navy-900); }
+.kartu-isi p { color: var(--teks-lembut); font-size: .98rem; }
+.kartu-grid-4 .kartu-isi h3 { font-size: 1.15rem; }
+
+/* Kartu yang membuka galeri khusus */
+.kartu-klik { cursor: pointer; }
+.lencana {
+  position: absolute; left: 10px; bottom: 10px; padding: .2rem .7rem; border-radius: 999px;
+  background: rgba(8, 20, 47, .85); color: var(--emas-terang); font-size: .8rem; font-weight: 600;
+  backdrop-filter: blur(4px);
+}
+/* Foto kolase (laboratorium): satu besar + dua kecil */
+.kolase { display: grid; grid-template-columns: 1.5fr 1fr; grid-template-rows: 1fr 1fr; gap: 3px; height: 100%; }
+.kolase > :first-child { grid-row: 1 / 3; }
+.kolase img, .kolase .placeholder { width: 100%; height: 100%; object-fit: cover; }
+.kolase > * { min-height: 0; min-width: 0; }
+
+.chip-daftar { display: flex; flex-wrap: wrap; gap: 8px; margin-top: .4rem; }
+.chip-daftar li { font-size: .85rem; padding: .25rem .7rem; border-radius: 999px; background: var(--mist); border: 1px solid var(--garis); color: var(--navy-800); font-weight: 500; }
+
+/* Placeholder foto */
+.placeholder {
+  width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+  padding: 1rem; text-align: center; color: rgba(255, 255, 255, .8); font-size: .85rem;
+  background: repeating-linear-gradient(135deg, var(--navy-800), var(--navy-800) 14px, var(--navy-900) 14px, var(--navy-900) 28px);
+}
+.placeholder svg { opacity: .8; }
+.placeholder code { font-size: .68rem; opacity: .75; word-break: break-all; max-width: 100%; }
+.placeholder strong { color: var(--emas-terang); font-weight: 600; }
+
+/* ---------- Galeri ---------- */
+.filter { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 1.8rem; }
+.filter button {
+  font: inherit; font-weight: 600; font-size: .95rem; cursor: pointer;
+  padding: .6rem 1.2rem; border-radius: 999px; border: 2px solid var(--garis); background: var(--putih); color: var(--navy-800);
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease;
+}
+.filter button:hover { border-color: var(--emas); transform: translateY(-2px); }
+.filter button[aria-pressed="true"] { background: var(--navy-900); border-color: var(--navy-900); color: var(--putih); }
+.filter button span { margin-left: 6px; font-weight: 500; opacity: .7; }
+
+.galeri-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.galeri-item {
+  position: relative; display: block; width: 100%; padding: 0; border: 0; cursor: zoom-in; aspect-ratio: 4 / 3;
+  border-radius: 12px; overflow: hidden; background: var(--navy-800); font: inherit; text-align: left;
+  animation: muncul .4s ease both;
+}
+.galeri-item.tanpa-foto { cursor: default; }
+.galeri-item > img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease, filter .4s ease; }
+.galeri-item:hover > img { transform: scale(1.07); }
+.galeri-cap {
+  position: absolute; inset: auto 0 0 0; padding: 2.2rem .9rem .8rem; color: var(--putih); font-weight: 600; font-size: .92rem;
+  background: linear-gradient(0deg, rgba(8, 20, 47, .92), rgba(8, 20, 47, 0));
+  display: flex; flex-direction: column; line-height: 1.3;
+}
+.galeri-cap small { color: var(--emas-terang); font-weight: 500; font-size: .78rem; }
+.galeri-item::after { content: ""; position: absolute; inset: 0; border-radius: 12px; box-shadow: inset 0 0 0 0 var(--emas); transition: box-shadow .3s ease; pointer-events: none; }
+.galeri-item:hover::after { box-shadow: inset 0 0 0 3px var(--emas); }
+@keyframes muncul { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+
+.galeri-lainnya { display: flex; justify-content: center; margin-top: 1.8rem; }
+.galeri-lainnya[hidden] { display: none; }
+.galeri-kosong { padding: 2rem 0; color: var(--teks-lembut); }
+
+/* ---------- SPMB ---------- */
+.spmb-pengantar { max-width: 46rem; color: rgba(255, 255, 255, .86); font-size: 1.1rem; }
+.spmb-judul, .spmb-kotak h3 { font-size: 1.4rem; color: var(--emas-terang); }
+.spmb-judul { margin: clamp(2rem, 4vw, 3rem) 0 1.2rem; }
+
+.jalur-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.jalur {
+  background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .14); border-radius: var(--radius);
+  padding: 1.6rem; display: flex; flex-direction: column; gap: .7rem;
+  transition: transform .3s ease, border-color .3s ease, background-color .3s ease;
+}
+.jalur:hover { transform: translateY(-5px); border-color: var(--emas); background: rgba(255, 255, 255, .09); }
+.jalur-kuota { font-family: var(--font-judul); font-size: 3.2rem; line-height: 1; color: var(--emas-terang); display: flex; align-items: baseline; gap: 10px; }
+.jalur-kuota span { font-family: var(--font-isi); font-size: .95rem; color: rgba(255, 255, 255, .7); }
+.jalur h4 { margin: 0; font-family: var(--font-judul); font-weight: 400; font-size: 1.25rem; }
+.jalur p { color: rgba(255, 255, 255, .8); font-size: .98rem; }
+
+.spmb-bawah { display: grid; grid-template-columns: 1.1fr 1fr; gap: 20px; margin-top: 20px; align-items: stretch; }
+.spmb-kotak { background: var(--navy-800); border-radius: var(--radius); padding: clamp(1.5rem, 3vw, 2.2rem); display: flex; flex-direction: column; gap: 1rem; align-items: flex-start; }
+.spmb-ket { color: rgba(255, 255, 255, .8); }
+.jadwal { margin: 0; width: 100%; display: grid; gap: 12px; }
+.jadwal > div { border-left: 3px solid var(--emas); padding: .2rem 0 .2rem 1rem; }
+.jadwal dt { font-size: .95rem; color: rgba(255, 255, 255, .75); }
+.jadwal dd { margin: 0; font-family: var(--font-judul); font-size: 1.6rem; }
+.jadwal small { color: rgba(255, 255, 255, .65); font-size: .85rem; }
+.spmb-portal { margin-top: -.4rem; font-size: .9rem; color: rgba(255, 255, 255, .65); }
+.ketentuan { display: grid; gap: 1.2rem; }
+.ketentuan li { display: flex; gap: 14px; align-items: flex-start; }
+.ketentuan li > svg { flex: none; margin-top: 2px; width: 34px; height: 34px; padding: 7px; border-radius: 50%; background: var(--emas); color: var(--navy-950); }
+.ketentuan strong { display: block; font-size: 1.1rem; }
+.ketentuan p { color: rgba(255, 255, 255, .8); font-size: .98rem; }
+
+/* ---------- Kontak ---------- */
+.kontak-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: stretch; }
+.kontak-daftar { display: grid; gap: 14px; align-content: start; }
+.kontak-baris {
+  display: grid; grid-template-columns: 48px 1fr auto; gap: 14px; align-items: center;
+  background: var(--putih); border: 1px solid var(--garis); border-radius: var(--radius); padding: 1rem 1.2rem;
+  transition: border-color .3s ease, box-shadow .3s ease;
+}
+.kontak-baris:hover { border-color: var(--emas); box-shadow: var(--bayangan); }
+.kontak-ikon { width: 48px; height: 48px; border-radius: 12px; background: var(--navy-900); color: var(--emas-terang); display: grid; place-items: center; }
+.kontak-teks { min-width: 0; }
+.kontak-teks small { display: block; color: var(--teks-lembut); font-size: .85rem; }
+.kontak-teks strong { display: block; color: var(--navy-900); overflow-wrap: anywhere; }
+.kontak-teks strong.kosong { color: var(--teks-lembut); font-weight: 500; font-style: italic; }
+.kontak-aksi {
+  font-size: .9rem; font-weight: 600; text-decoration: none; padding: .5rem 1rem; border-radius: 999px;
+  background: var(--emas); color: var(--navy-950); white-space: nowrap; transition: background-color .2s ease, transform .2s ease;
+}
+.kontak-aksi:hover { background: var(--emas-terang); transform: translateY(-2px); }
+.kontak-aksi[aria-disabled="true"] { background: var(--mist); color: var(--teks-lembut); border: 1px dashed var(--garis); cursor: not-allowed; transform: none; }
+
+.peta { position: relative; min-height: 360px; border-radius: var(--radius); overflow: hidden; background: var(--navy-900); border: 1px solid var(--garis); }
+.peta iframe { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; border: 0; background: transparent; }
+.peta-cadangan {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .6rem;
+  padding: 1.5rem; text-align: center; color: rgba(255, 255, 255, .85);
+  background:
+    linear-gradient(rgba(8, 20, 47, .88), rgba(8, 20, 47, .88)),
+    repeating-linear-gradient(0deg, transparent 0 39px, rgba(255, 255, 255, .06) 39px 40px),
+    repeating-linear-gradient(90deg, transparent 0 39px, rgba(255, 255, 255, .06) 39px 40px);
+}
+.peta-cadangan svg { color: var(--emas); }
+.peta-cadangan strong { font-family: var(--font-judul); font-weight: 400; font-size: 1.3rem; color: var(--putih); }
+.peta-cadangan p { max-width: 26rem; font-size: .95rem; }
+.peta-tombol { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: .6rem; }
+.peta-tombol .tombol { padding: .6rem 1.2rem; font-size: .92rem; }
+.peta-tombol .tombol-navy { background: transparent; border-color: rgba(255, 255, 255, .5); }
+.peta-tombol .tombol-navy:hover { background: var(--putih); color: var(--navy-900); border-color: var(--putih); }
+
+/* ---------- Footer ---------- */
+.footer { background: var(--navy-950); color: rgba(255, 255, 255, .8); padding-block: 2.2rem; }
+.footer-isi { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.footer-brand { display: flex; align-items: center; gap: 14px; }
+.footer-brand img { width: 44px; height: auto; }
+.footer-brand strong { display: block; font-family: var(--font-judul); font-weight: 400; color: var(--putih); font-size: 1.1rem; }
+.footer-brand span { color: var(--emas-terang); font-size: .9rem; }
+.footer p { font-size: .9rem; }
+
+/* ---------- Kembali ke atas ---------- */
+.ke-atas {
+  position: fixed; right: max(20px, env(safe-area-inset-right, 0px)); bottom: calc(20px + env(safe-area-inset-bottom, 0px)); z-index: 90;
+  width: 48px; height: 48px; border-radius: 50%; border: 0; cursor: pointer;
+  background: var(--emas); color: var(--navy-950); display: grid; place-items: center;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .3); transition: transform .25s ease, background-color .25s ease;
+}
+.ke-atas:hover { transform: translateY(-4px); background: var(--emas-terang); }
+
+/* ---------- Lightbox ---------- */
+.lightbox {
+  position: fixed; inset: 0; z-index: 300; background: rgba(5, 12, 30, .95);
+  display: none; align-items: center; justify-content: center; gap: 12px;
+  padding: 56px max(12px, env(safe-area-inset-right, 0px)) 24px max(12px, env(safe-area-inset-left, 0px));
+}
+.lightbox.terbuka { display: flex; }
+.lb-figur { margin: 0; flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.lb-figur > img { max-width: 100%; max-height: calc(100vh - 220px); max-height: calc(100dvh - 220px); width: auto; height: auto; object-fit: contain; border-radius: 8px; box-shadow: 0 20px 60px rgba(0, 0, 0, .6); }
+.lb-figur figcaption { color: var(--putih); text-align: center; display: flex; flex-direction: column; gap: 2px; }
+.lb-figur figcaption span { color: var(--emas-terang); font-size: .9rem; }
+/* Deretan foto kecil di galeri khusus */
+.lb-thumbs { display: flex; gap: 8px; max-width: 100%; overflow-x: auto; padding: 4px; }
+.lb-thumbs[hidden] { display: none; }
+.lb-thumbs button {
+  flex: none; width: 76px; height: 56px; padding: 0; border: 2px solid transparent; border-radius: 8px; overflow: hidden;
+  cursor: pointer; background: var(--navy-800); opacity: .6; transition: opacity .2s ease, border-color .2s ease;
+}
+.lb-thumbs button:hover, .lb-thumbs button[aria-current="true"] { opacity: 1; }
+.lb-thumbs button[aria-current="true"] { border-color: var(--emas); }
+.lb-thumbs img { width: 100%; height: 100%; object-fit: cover; }
+
+.lb-tutup, .lb-nav {
+  border: 0; cursor: pointer; color: var(--putih); background: rgba(255, 255, 255, .12); border-radius: 50%;
+  transition: background-color .2s ease, transform .2s ease;
+}
+.lb-tutup:hover, .lb-nav:hover { background: var(--emas); color: var(--navy-950); }
+.lb-tutup { position: absolute; top: 10px; right: 12px; width: 44px; height: 44px; font-size: 1.9rem; line-height: 1; }
+.lb-nav { flex: none; width: 48px; height: 48px; display: grid; place-items: center; }
+
+/* ---------- Animasi saat menggulir ---------- */
+/* Elemen baru disembunyikan hanya jika JavaScript aktif (kelas .js ditambahkan oleh script.js) */
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+.js .reveal.terlihat { opacity: 1; transform: none; }
+
+/* ---------- Responsif ---------- */
+@media (max-width: 1280px) {
+  .menu-tombol { display: flex; }
+  .menu {
+    position: absolute; top: 100%; left: 0; right: 0; background: rgba(8, 20, 47, .98);
+    max-height: 0; overflow: hidden; transition: max-height .35s ease;
+  }
+  .menu-buka .menu { max-height: 640px; }
+  .menu ul { flex-direction: column; align-items: stretch; padding: 8px max(20px, env(safe-area-inset-left, 0px)) 18px; gap: 0; }
+  .menu a { padding: 14px 8px; border-bottom: 1px solid rgba(255, 255, 255, .08); border-radius: 0; }
+  .menu a::after { display: none; }
+  .menu a.aktif { color: var(--emas-terang); }
+  .menu-ppdb { padding-top: 14px; }
+  .menu-ppdb a { margin-left: 0; text-align: center; border-bottom: 0; padding: 12px; }
+}
+
+@media (max-width: 980px) {
+  .hero-isi { grid-template-columns: 1fr; }
+  .hero-foto { max-width: 520px; margin-right: 18px; }
+  .hero-fakta { grid-template-columns: repeat(2, 1fr); }
+  .profil-grid, .visimisi-grid, .kontak-grid { grid-template-columns: 1fr; }
+  .profil-kiri { position: static; }
+  .kartu-grid-3 { grid-template-columns: repeat(2, 1fr); }
+  .kartu-grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .jalur-grid, .spmb-bawah { grid-template-columns: 1fr; }
+  .galeri-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 680px) {
+  body { font-size: 1rem; }
+  .brand-teks strong { font-size: .95rem; }
+  .tenaga { grid-template-columns: 1fr; }
+  .kartu-grid-3 { grid-template-columns: 1fr; }
+  .kartu-grid-4 { grid-template-columns: 1fr 1fr; gap: 14px; }
+  .kartu-grid-4 .kartu-isi { padding: .9rem 1rem 1.1rem; }
+  .kartu-grid-4 .kartu-isi h3 { font-size: 1rem; }
+  .kartu-grid-4 .kartu-isi p { font-size: .88rem; }
+  .galeri-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .galeri-cap { font-size: .8rem; padding: 1.6rem .6rem .6rem; }
+  .kontak-baris { grid-template-columns: 44px 1fr; }
+  .kontak-aksi { grid-column: 1 / -1; text-align: center; }
+  .lb-nav { position: absolute; bottom: 14px; z-index: 2; }
+  .lb-sebelumnya { left: 16px; }
+  .lb-berikutnya { right: 16px; }
+  .lb-figur > img { max-height: calc(100vh - 260px); max-height: calc(100dvh - 260px); }
+}
+
+@media (max-width: 420px) {
+  .brand-teks small { display: none; }
+  .hero-tombol .tombol { width: 100%; }
+}
+
+/* Hormati pengguna yang mematikan animasi */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+  .js .reveal { opacity: 1; transform: none; }
+}
+
+</style>
+
+
+  <a class="lewati" href="#beranda">Lewati ke konten utama</a>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" id="navbar">
+    <div class="wadah navbar-isi">
+      <a class="brand" href="#beranda" aria-label="SMA Negeri 1 Purwakarta, ke Beranda">
+        <img src="images/logo/logo-sekolah.png" alt="Logo SMA Negeri 1 Purwakarta" width="40" height="38">
+        <span class="brand-teks">
+          <strong>SMA Negeri 1 Purwakarta</strong>
+          <small>SMANSA</small>
+        </span>
+      </a>
+
+      <button class="menu-tombol" id="menuTombol" aria-expanded="false" aria-controls="menuNav" aria-label="Buka menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="menu" id="menuNav" aria-label="Navigasi utama">
+        <ul>
+          <li><a href="#beranda">Beranda</a></li>
+          <li><a href="#profil">Profil Sekolah</a></li>
+          <li><a href="#visi-misi">Visi dan Misi</a></li>
+          <li><a href="#fasilitas">Fasilitas</a></li>
+          <li><a href="#ekstrakurikuler">Ekstrakurikuler</a></li>
+          <li><a href="#galeri">Galeri</a></li>
+          <li><a href="#kontak">Kontak</a></li>
+          <li class="menu-ppdb"><a href="#spmb">SPMB</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ 1. BERANDA / HERO ============ -->
+    <section class="hero" id="beranda">
+      <!-- Foto latar hero: ganti file ini untuk mengubah foto utama -->
+      <img class="hero-latar" src="images/gedung/gedung-lapangan.jpg" alt="" fetchpriority="high">
+      <div class="hero-lapisan"></div>
+
+      <div class="wadah hero-isi">
+        <div class="hero-teks">
+          <img class="hero-logo" src="images/logo/logo-sekolah.png" alt="Logo SMA Negeri 1 Purwakarta" width="84" height="80">
+          <h1>SMA Negeri 1 Purwakarta</h1>
+          <p class="slogan">Be Smart With Us</p>
+          <p class="sambutan">
+            Sekolah menengah atas negeri pertama di Kabupaten Purwakarta, berdiri sejak 1957.
+            Tempat siswa tumbuh menjadi pribadi yang religius, unggul dalam prestasi, terampil, dan berwawasan global.
+          </p>
+          <div class="hero-tombol">
+            <a class="tombol tombol-emas" href="#profil">Jelajahi Sekolah</a>
+            <a class="tombol tombol-garis" href="#galeri">Lihat Galeri</a>
+            <a class="tombol tombol-garis" href="#spmb">Info SPMB</a>
+          </div>
+        </div>
+
+        <figure class="hero-foto">
+          <img src="images/gedung/gedung-depan.jpg" alt="Gedung SMA Negeri 1 Purwakarta tampak depan" width="660" height="350">
+          <figcaption>Gedung SMA Negeri 1 Purwakarta</figcaption>
+        </figure>
+      </div>
+
+      <div class="wadah">
+        <dl class="hero-fakta">
+          <div><dt>Berdiri</dt><dd>17 Juli 1957</dd></div>
+          <div><dt>Ruang kelas</dt><dd>sekitar 35</dd></div>
+          <div><dt>Ruang laboratorium</dt><dd>sekitar 8</dd></div>
+          <div><dt>Ekstrakurikuler</dt><dd>8 kegiatan</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ============ 2. PROFIL SEKOLAH ============ -->
+    <section class="bagian" id="profil">
+      <div class="wadah">
+        <header class="bagian-kepala">
+          <h2>Profil Sekolah</h2>
+          <p>Identitas dan perjalanan SMA Negeri 1 Purwakarta sejak awal berdiri.</p>
+        </header>
+
+        <div class="profil-grid">
+          <div class="profil-kiri">
+            <!-- Foto profil sekolah -->
+            <figure class="profil-foto reveal">
+              <img src="images/gedung/gedung-lapangan.jpg" alt="Gedung dan lapangan SMA Negeri 1 Purwakarta" loading="lazy" decoding="async">
+              <figcaption>Gedung dan lapangan sekolah</figcaption>
+            </figure>
+
+            <!-- Identitas -->
+            <aside class="identitas reveal">
+              <h3>Identitas Sekolah</h3>
+              <dl>
+                <div><dt>Nama</dt><dd>SMA Negeri 1 Purwakarta</dd></div>
+                <div><dt>Singkatan</dt><dd>SMANSA</dd></div>
+                <div><dt>Slogan</dt><dd>Be Smart With Us</dd></div>
+                <div><dt>Status</dt><dd>Sekolah Menengah Atas Negeri</dd></div>
+              </dl>
+            </aside>
+          </div>
+
+          <!-- Sejarah: timeline. Ubah teks langsung di sini. -->
+          <div class="sejarah">
+            <h3>Sejarah Sekolah</h3>
+            <ol class="timeline">
+              <li class="reveal">
+                <time>Awal 1957</time>
+                <p>Purwakarta belum memiliki SMA Negeri. Pendidikan tingkat SMA hanya tersedia melalui sekolah swasta, yaitu SMA Sabha Siswa.</p>
+              </li>
+              <li class="reveal">
+                <time>Gagasan pendirian</time>
+                <p>Bapak Parjan mengusulkan berdirinya SMA Negeri dalam pertemuan POM SMA Sabha Siswa. Gagasan ini disampaikan melalui pemerintah daerah dengan bantuan Bapak R. Gunasah Natabrata, Wakil Bupati saat itu.</p>
+              </li>
+              <li class="reveal">
+                <time>Tahun ajaran 1957/1958</time>
+                <p>Usulan diteruskan ke Kantor PKK Bandung dan Kantor Inspeksi Pusat SMA Jakarta untuk direalisasikan pada tahun ajaran 1957/1958.</p>
+              </li>
+              <li class="reveal">
+                <time>17 Juli 1957</time>
+                <p>SMA Negeri Purwakarta resmi berdiri berdasarkan SK Nomor SL.0158/SK/III/1957.</p>
+              </li>
+              <li class="reveal">
+                <time>Awal berdiri</time>
+                <p>Sekolah dikenal sebagai SMA Negeri 25, sesuai urutan pendaftaran SMA Negeri di wilayah Jawa Barat. Kepala sekolah pertamanya adalah Bapak Toma Suriadireja, guru dari SMA Bandung.</p>
+                <ul class="jurusan">
+                  <li><b>Jurusan A</b> Bahasa</li>
+                  <li><b>Jurusan B</b> Ilmu Pasti/Alam</li>
+                  <li><b>Jurusan C</b> Sosial Ekonomi</li>
+                </ul>
+              </li>
+              <li class="reveal">
+                <time>Kini</time>
+                <p>Seiring perkembangan waktu, sekolah ini dikenal sebagai SMA Negeri 1 Purwakarta.</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Guru dan tenaga kependidikan: ubah angkanya di sini -->
+        <div class="tenaga" id="tenaga">
+          <div class="tenaga-kartu reveal">
+            <div class="tenaga-angka">54</div>
+            <div class="tenaga-label"><strong>Guru</strong><span>Tenaga pendidik</span></div>
+          </div>
+          <div class="tenaga-kartu reveal">
+            <div class="tenaga-angka">20</div>
+            <div class="tenaga-label"><strong>Tenaga Kependidikan</strong><span>Staf dan tenaga pendukung</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3. VISI DAN MISI ============ -->
+    <section class="bagian bagian-navy" id="visi-misi">
+      <div class="wadah">
+        <header class="bagian-kepala">
+          <h2>Visi dan Misi</h2>
+        </header>
+
+        <div class="visimisi-grid">
+          <div class="visi reveal">
+            <h3>Visi</h3>
+            <blockquote>
+              Mewujudkan insan yang religius, unggul dalam prestasi, terampil, dan berwawasan global.
+            </blockquote>
+          </div>
+
+          <div class="misi">
+            <h3>Misi</h3>
+            <ol>
+              <li class="reveal">Meningkatkan kualitas pendidikan yang berlandaskan nilai-nilai keagamaan dan budi pekerti luhur.</li>
+              <li class="reveal">Mendorong pencapaian prestasi akademik dan non-akademik secara optimal di tingkat lokal, nasional, hingga internasional.</li>
+              <li class="reveal">Mengembangkan keterampilan siswa melalui berbagai program intrakurikuler dan ekstrakurikuler guna menghadapi tantangan zaman.</li>
+              <li class="reveal">Membangun wawasan global pada seluruh warga sekolah dengan tetap mempertahankan nilai-nilai budaya bangsa.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4. FASILITAS ============ -->
+    <section class="bagian" id="fasilitas">
+      <div class="wadah">
+        <header class="bagian-kepala">
+          <h2>Fasilitas Sekolah</h2>
+          <p>Ruang belajar yang mendukung kegiatan pembelajaran dan praktikum siswa. Klik kartu untuk melihat semua fotonya.</p>
+        </header>
+        <!-- Diisi otomatis dari script.js (KARTU_FASILITAS dan KOLEKSI) -->
+        <div class="kartu-grid kartu-grid-3" id="fasilitasDaftar"></div>
+      </div>
+    </section>
+
+    <!-- ============ 5. EKSTRAKURIKULER ============ -->
+    <section class="bagian bagian-mist" id="ekstrakurikuler">
+      <div class="wadah">
+        <header class="bagian-kepala">
+          <h2>Ekstrakurikuler</h2>
+          <p>Delapan kegiatan untuk mengembangkan minat, bakat, dan keterampilan siswa. Klik kartu untuk melihat galerinya.</p>
+        </header>
+        <!-- Diisi otomatis dari script.js (KARTU_EKSKUL dan KOLEKSI) -->
+        <div class="kartu-grid kartu-grid-4" id="ekskulDaftar"></div>
+      </div>
+    </section>
+
+    <!-- ============ SPMB (PPDB) ============ -->
+    <section class="bagian bagian-navy" id="spmb">
+      <div class="wadah">
+        <header class="bagian-kepala">
+          <h2>Informasi SPMB</h2>
+          <p>Sistem Penerimaan Murid Baru SMA Negeri 1 Purwakarta, sebelumnya dikenal sebagai PPDB.</p>
+        </header>
+
+        <!-- Ubah isi bagian ini langsung di index.html setiap tahun ajaran baru -->
+        <p class="spmb-pengantar reveal">
+          Sebagai salah satu sekolah yang ditetapkan sebagai Sekolah Maung (Manusia Unggul) oleh Pemerintah Provinsi Jawa Barat,
+          sistem seleksi di SMAN 1 Purwakarta berfokus sepenuhnya pada penjaringan potensi dan prestasi siswa tanpa menggunakan jalur zonasi.
+        </p>
+
+        <h3 class="spmb-judul">Jalur Penerimaan dan Kuota</h3>
+        <div class="jalur-grid">
+          <article class="jalur reveal">
+            <div class="jalur-kuota">70%<span>kuota</span></div>
+            <h4>Jalur Kompetensi Akademik</h4>
+            <p>Diperuntukkan bagi calon murid yang memiliki keunggulan di bidang akademik. Penilaian didasarkan pada akumulasi nilai rapor (semester 1 sampai 5), hasil Tes Kemampuan Akademik (TKA), serta sertifikat prestasi kejuaraan akademik (seperti OSN atau olimpiade sains lainnya).</p>
+          </article>
+          <article class="jalur reveal">
+            <div class="jalur-kuota">20%<span>kuota</span></div>
+            <h4>Jalur Kompetensi Non-Akademik</h4>
+            <p>Diperuntukkan bagi calon murid berprestasi di luar bidang akademik, meliputi kejuaraan bidang olahraga, seni, dan keagamaan, maupun jalur kepemimpinan (seperti pengalaman menjabat sebagai Ketua OSIS atau pemimpin Pramuka).</p>
+          </article>
+          <article class="jalur reveal">
+            <div class="jalur-kuota">10%<span>kuota</span></div>
+            <h4>Jalur Potensi Akademik / CIBI</h4>
+            <p>Jalur khusus bagi calon murid dengan kategori Cerdas Istimewa dan Bakat Istimewa (CIBI). Calon murid wajib melampirkan hasil tes IQ dari lembaga psikologi resmi dengan skor minimal 130, serta mengikuti pembobotan penilaian gabungan dari nilai rapor (40%) dan hasil TKA (60%).</p>
+          </article>
+        </div>
+
+        <div class="spmb-bawah">
+          <div class="spmb-kotak reveal">
+            <h3>Jadwal Pelaksanaan</h3>
+            <p class="spmb-ket">Pelaksanaan SPMB Sekolah Maung dilakukan dalam satu tahap secara serentak dan lebih awal dibandingkan SMA reguler.</p>
+            <dl class="jadwal">
+              <div>
+                <dt>Pendaftaran dan verifikasi berkas</dt>
+                <dd>25 sampai 29 Mei</dd>
+                <small>Menyesuaikan kalender akademik Dinas Pendidikan Jabar</small>
+              </div>
+              <div>
+                <dt>Pengumuman hasil seleksi</dt>
+                <dd>8 Juni</dd>
+              </div>
+            </dl>
+            <a class="tombol tombol-emas" href="https://maung.spmb.jabarprov.go.id" target="_blank" rel="noopener">Buka portal pendaftaran resmi</a>
+            <p class="spmb-portal">maung.spmb.jabarprov.go.id</p>
+          </div>
+
+          <div class="spmb-kotak reveal">
+            <h3>Ketentuan Penting</h3>
+            <ul class="ketentuan">
+              <li>
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+                <div><strong>Tanpa jalur zonasi</strong><p>Seleksi murni berdasarkan kompetensi, potensi, dan prestasi calon murid.</p></div>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+                <div><strong>Bebas biaya (gratis)</strong><p>Seluruh rangkaian proses pendaftaran hingga seleksi SPMB di SMAN 1 Purwakarta tidak dipungut biaya apa pun.</p></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 7. GALERI ============ -->
+    <section class="bagian bagian-mist" id="galeri">
+      <div class="wadah">
+        <header class="bagian-kepala">
+          <h2>Galeri Sekolah</h2>
+          <p>Seluruh dokumentasi fasilitas, ekstrakurikuler, dan kegiatan sekolah. Klik foto untuk melihat lebih besar.</p>
+        </header>
+
+        <div class="filter" id="galeriFilter" role="group" aria-label="Filter kategori galeri"></div>
+        <div class="galeri-grid" id="galeriGrid"></div>
+        <div class="galeri-lainnya"><button type="button" class="tombol tombol-navy" id="galeriLainnya" hidden>Tampilkan lebih banyak</button></div>
+        <p class="galeri-kosong" id="galeriKosong" hidden></p>
+      </div>
+    </section>
+
+    <!-- ============ 8. KONTAK ============ -->
+    <section class="bagian" id="kontak">
+      <div class="wadah">
+        <header class="bagian-kepala">
+          <h2>Kontak</h2>
+          <p>Hubungi SMA Negeri 1 Purwakarta melalui kanal berikut.</p>
+        </header>
+
+        <div class="kontak-grid">
+          <!-- Ubah alamat, telepon, email, Instagram langsung di sini -->
+          <ul class="kontak-daftar">
+            <li class="kontak-baris">
+              <div class="kontak-ikon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+              <div class="kontak-teks"><small>Alamat</small><strong>Jl. Kolonel Kornel Singawinata No. 113, Nagrikidul, Kec. Purwakarta, Kabupaten Purwakarta, Jawa Barat 41111</strong></div>
+              <a class="kontak-aksi" href="https://www.google.com/maps/search/?api=1&amp;query=Jl.%20Kolonel%20Kornel%20Singawinata%20No.%20113%2C%20Nagrikidul%2C%20Kec.%20Purwakarta%2C%20Kabupaten%20Purwakarta%2C%20Jawa%20Barat%2041111" target="_blank" rel="noopener">Buka Google Maps</a>
+            </li>
+            <li class="kontak-baris">
+              <div class="kontak-ikon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></div>
+              <div class="kontak-teks"><small>Nomor telepon</small><strong>(0264) 200025 / (0264) 200263</strong></div>
+              <a class="kontak-aksi" href="tel:0264200025">Telepon</a>
+            </li>
+            <li class="kontak-baris">
+              <div class="kontak-ikon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+              <div class="kontak-teks"><small>Email sekolah</small><strong>sman1purwakarta@gmail.com</strong></div>
+              <a class="kontak-aksi" href="mailto:sman1purwakarta@gmail.com">Kirim email</a>
+            </li>
+            <li class="kontak-baris">
+              <div class="kontak-ikon"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></div>
+              <div class="kontak-teks"><small>Instagram resmi</small><strong>@official_sman1purwakarta</strong></div>
+              <a class="kontak-aksi" href="https://www.instagram.com/official_sman1purwakarta" target="_blank" rel="noopener">Buka Instagram</a>
+            </li>
+          </ul>
+
+          <!-- Peta Google Maps dari alamat. Jika peta tidak bisa dimuat (offline atau diblokir),
+               panel di belakangnya tetap menampilkan alamat dan tombol petunjuk arah. -->
+          <div class="peta">
+            <div class="peta-cadangan">
+              <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              <strong>SMA Negeri 1 Purwakarta</strong>
+              <p>Jl. Kolonel Kornel Singawinata No. 113, Nagrikidul, Kec. Purwakarta, Kabupaten Purwakarta, Jawa Barat 41111</p>
+              <div class="peta-tombol">
+                <a class="tombol tombol-emas" href="https://www.google.com/maps/search/?api=1&amp;query=Jl.%20Kolonel%20Kornel%20Singawinata%20No.%20113%2C%20Nagrikidul%2C%20Kec.%20Purwakarta%2C%20Kabupaten%20Purwakarta%2C%20Jawa%20Barat%2041111" target="_blank" rel="noopener">Buka di Google Maps</a>
+                <a class="tombol tombol-navy" href="https://www.google.com/maps/dir/?api=1&amp;destination=Jl.%20Kolonel%20Kornel%20Singawinata%20No.%20113%2C%20Nagrikidul%2C%20Kec.%20Purwakarta%2C%20Kabupaten%20Purwakarta%2C%20Jawa%20Barat%2041111" target="_blank" rel="noopener">Petunjuk arah</a>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="wadah footer-isi">
+      <div class="footer-brand">
+        <img src="images/logo/logo-sekolah.png" alt="" width="44" height="42">
+        <div>
+          <strong>SMA Negeri 1 Purwakarta</strong>
+          <span>Be Smart With Us</span>
+        </div>
+      </div>
+      <p><a class="footer-ppdb" href="#spmb">Informasi SPMB</a></p>
+      <p>&copy; <span id="tahun">2026</span> SMA Negeri 1 Purwakarta (SMANSA)</p>
+    </div>
+  </footer>
+
+  <!-- Tombol kembali ke atas -->
+  <button class="ke-atas" id="keAtas" aria-label="Kembali ke atas" hidden>
+    <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+
+  <!-- Lightbox: foto diperbesar -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto galeri" hidden>
+    <button class="lb-tutup" id="lbTutup" aria-label="Tutup">&times;</button>
+    <button class="lb-nav lb-sebelumnya" id="lbSebelumnya" aria-label="Foto sebelumnya">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <figure class="lb-figur">
+      <img id="lbGambar" alt="">
+      <figcaption>
+        <strong id="lbNama"></strong>
+        <span id="lbInfo"></span>
+      </figcaption>
+      <div class="lb-thumbs" id="lbThumbs" hidden></div>
+    </figure>
+    <button class="lb-nav lb-berikutnya" id="lbBerikutnya" aria-label="Foto berikutnya">
+      <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  
+
+<script>
+/* =====================================================
+   SMA NEGERI 1 PURWAKARTA - script.js
+
+   BAGIAN 1 (paling atas) adalah DATA yang bisa Anda edit:
+     - KOLEKSI  : semua foto (fasilitas, ekskul, kegiatan)
+     - KARTU_FASILITAS : kartu di bagian Fasilitas
+     - KARTU_EKSKUL    : kartu di bagian Ekstrakurikuler
+     - TENAGA / KONTAK : ada di index.html (cari kata kuncinya dengan Ctrl + F)
+
+   BAGIAN 2 (di bawahnya) adalah kode yang menjalankan website.
+   Biasanya tidak perlu diubah.
+   ===================================================== */
+
+
+/* =====================================================
+   BAGIAN 1 - DATA (silakan edit)
+   ===================================================== */
+
+/* ---------- KOLEKSI FOTO ----------
+   Satu baris = satu jenis dokumentasi (misalnya satu ekskul).
+   - id       : nama pendek tanpa spasi (dipakai untuk menghubungkan kartu)
+   - kategori : "fasilitas", "ekskul", atau "kegiatan"
+   - nama     : judul yang tampil
+   - foto     : daftar foto. UNTUK MENAMBAH FOTO, cukup tambahkan satu path lagi
+                di dalam tanda [ ], dipisah koma. Contoh:
+                foto: ["images/ekskul/basket/basket-1.jpg", "images/ekskul/basket/basket-2.jpg"]
+   - posisi   : (opsional) bagian foto yang diutamakan saat dipotong, mis. "center 30%"
+   Jika file foto tidak ditemukan, otomatis tampil kotak "Foto belum tersedia". */
+const KOLEKSI = [
+
+  /* ----- FASILITAS ----- */
+  { id: "lab-biologi",  kategori: "fasilitas", nama: "Laboratorium Biologi",  posisi: "center 40%", foto: ["images/fasilitas/lab-biologi/lab-biologi-1.jpg"] },
+  { id: "lab-fisika",   kategori: "fasilitas", nama: "Laboratorium Fisika",   posisi: "center 50%", foto: ["images/fasilitas/lab-fisika/lab-fisika-1.jpg"] },
+  { id: "lab-komputer", kategori: "fasilitas", nama: "Laboratorium Komputer", posisi: "center 40%", foto: ["images/fasilitas/lab-komputer/lab-komputer-1.jpg"] },
+  { id: "perpustakaan", kategori: "fasilitas", nama: "Perpustakaan",          posisi: "center 55%", foto: ["images/fasilitas/perpustakaan/perpustakaan-1.jpg"] },
+
+  /* ----- EKSTRAKURIKULER (harus sama dengan KARTU_EKSKUL di bawah) ----- */
+  { id: "basket",       kategori: "ekskul", nama: "Basket",                      posisi: "center 30%", foto: ["images/ekskul/basket/basket-1.jpg"] },
+  { id: "modern-dance", kategori: "ekskul", nama: "Modern Dance",                posisi: "center 55%", foto: ["images/ekskul/modern-dance/modern-dance-1.jpg"] },
+  { id: "multimedia",   kategori: "ekskul", nama: "Multimedia and Broadcasting", posisi: "center 55%", foto: ["images/ekskul/multimedia-broadcasting/multimedia-1.jpg"] },
+  { id: "osis",         kategori: "ekskul", nama: "OSIS/BPHPK",                  posisi: "center 70%", foto: ["images/ekskul/osis-bphpk/osis-1.jpg"] },
+  { id: "paskibra",     kategori: "ekskul", nama: "Paskibra",                    posisi: "center 55%", foto: ["images/ekskul/paskibra/paskibra-1.jpg"] },
+  { id: "pmr",          kategori: "ekskul", nama: "PMR",                         posisi: "center 72%", foto: ["images/ekskul/pmr/pmr-1.jpg"] },
+  { id: "pramuka",      kategori: "ekskul", nama: "Pramuka",                     posisi: "center 40%", foto: ["images/ekskul/pramuka/pramuka-1.jpg"] },
+  { id: "teater",       kategori: "ekskul", nama: "Teater (Kresta Purwakarta)",  posisi: "center 40%", foto: ["images/ekskul/teater/teater-1.jpg"] },
+
+  /* ----- KEGIATAN SEKOLAH ----- */
+  { id: "keagamaan",    kategori: "kegiatan", nama: "Kegiatan Keagamaan",    posisi: "center 40%", foto: ["images/kegiatan/keagamaan/keagamaan-1.jpg"] },
+  { id: "literasi",     kategori: "kegiatan", nama: "Literasi",              posisi: "center 50%", foto: ["images/kegiatan/literasi/literasi-1.jpg"] },
+  { id: "pembelajaran", kategori: "kegiatan", nama: "Pembelajaran di Kelas", posisi: "center 55%", foto: ["images/kegiatan/pembelajaran/pembelajaran-1.jpg"] },
+  { id: "upacara",      kategori: "kegiatan", nama: "Upacara",               posisi: "center 55%", foto: ["images/kegiatan/upacara/upacara-1.jpg"] }
+];
+
+/* Nama kategori untuk tombol filter dan label foto */
+const KATEGORI = [
+  { kunci: "semua",     label: "Semua" },
+  { kunci: "fasilitas", label: "Fasilitas" },
+  { kunci: "ekskul",    label: "Ekstrakurikuler" },
+  { kunci: "kegiatan",  label: "Kegiatan" }
+];
+
+/* ---------- KARTU FASILITAS ----------
+   Hanya tiga fasilitas. "koleksi" berisi id dari KOLEKSI di atas;
+   semua foto dari koleksi itu tampil di galeri kartu saat kartu diklik. */
+const KARTU_FASILITAS = [
+  {
+    nama: "Ruang Kelas",
+    deskripsi: "Sekolah memiliki sekitar 35 ruang kelas yang digunakan untuk mendukung kegiatan pembelajaran siswa.",
+    koleksi: ["pembelajaran"]
+  },
+  {
+    nama: "Laboratorium",
+    deskripsi: "Terdapat sekitar delapan ruang laboratorium dalam satu fasilitas laboratorium terpadu, yang mendukung kegiatan praktikum dan pembelajaran.",
+    daftar: ["Laboratorium Biologi", "Laboratorium Fisika", "Laboratorium Komputer/Multimedia"],
+    koleksi: ["lab-biologi", "lab-fisika", "lab-komputer"]
+  },
+  {
+    nama: "Perpustakaan",
+    deskripsi: "Menyediakan berbagai koleksi buku pelajaran, referensi ilmiah, dan bahan bacaan literasi untuk mendukung kegiatan belajar siswa.",
+    koleksi: ["perpustakaan"]
+  }
+];
+
+/* ---------- KARTU EKSTRAKURIKULER ----------
+   Hanya delapan kegiatan. "id" sama dengan id di KOLEKSI.
+   Deskripsi singkat boleh Anda ubah atau lengkapi. */
+const KARTU_EKSKUL = [
+  { id: "basket",       deskripsi: "Kegiatan olahraga bola basket." },
+  { id: "modern-dance", deskripsi: "Kegiatan tari modern." },
+  { id: "multimedia",   deskripsi: "Kegiatan di bidang multimedia dan penyiaran." },
+  { id: "osis",         deskripsi: "Organisasi siswa SMA Negeri 1 Purwakarta." },
+  { id: "paskibra",     deskripsi: "Pasukan pengibar bendera." },
+  { id: "pmr",          deskripsi: "Palang Merah Remaja." },
+  { id: "pramuka",      deskripsi: "Kegiatan kepramukaan." },
+  { id: "teater",       deskripsi: "Kegiatan seni teater." }
+];
+
+/* Jumlah foto yang tampil sekaligus di galeri utama (sisanya lewat tombol "Tampilkan lebih banyak") */
+const FOTO_PER_HALAMAN = 24;
+
+
+/* =====================================================
+   BAGIAN 2 - KODE PROGRAM (biasanya tidak perlu diubah)
+   ===================================================== */
+
+/* Menandai bahwa JavaScript aktif (dipakai CSS untuk animasi scroll) */
+document.documentElement.classList.add("js");
+
+/* ---------- Fungsi bantu ---------- */
+
+/* Membuat elemen HTML: buat("div", { class: "kartu" }, [anak1, anak2]) */
+function buat(tag, atribut, anak) {
+  const el = document.createElement(tag);
+  Object.entries(atribut || {}).forEach(([k, v]) => {
+    if (v === null || v === undefined || v === false) return;
+    if (k === "teks") el.textContent = v;
+    else el.setAttribute(k, v);
+  });
+  [].concat(anak || []).forEach(a => el.append(a));
+  return el;
+}
+
+const IKON_FOTO = '<svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 16l-5-5-8 8"/></svg>';
+
+const labelKategori = kunci => (KATEGORI.find(k => k.kunci === kunci) || { label: kunci }).label;
+const cariKoleksi = id => KOLEKSI.find(k => k.id === id);
+
+/* Daftar foto yang gagal dimuat (file tidak ditemukan) */
+const fotoRusak = new Set();
+
+function buatPlaceholder(nama, src) {
+  const p = buat("div", { class: "placeholder", role: "img", "aria-label": "Foto belum tersedia: " + nama });
+  p.innerHTML = IKON_FOTO;
+  p.append(buat("strong", { teks: nama }), buat("span", { teks: "Foto belum tersedia" }));
+  /* Tampilkan file yang dicari, supaya mudah mengecek nama dan lokasi foto */
+  if (src) p.append(buat("code", { teks: "Dicari: " + src }));
+  return p;
+}
+
+/* Membuat gambar. Jika file tidak ada, otomatis diganti kotak placeholder. */
+function buatGambar(src, alt, posisi) {
+  if (!src) return buatPlaceholder(alt);
+  const img = buat("img", { src: src, alt: alt, loading: "lazy", decoding: "async" });
+  if (posisi) img.style.objectPosition = posisi;
+  img.addEventListener("error", () => {
+    fotoRusak.add(src);
+    img.replaceWith(buatPlaceholder(alt, src));
+  });
+  return img;
+}
+
+/* Semua foto sebuah koleksi, dalam bentuk objek untuk lightbox */
+function fotoKoleksi(k) {
+  return k.foto.map(src => ({ src: src, nama: k.nama, kategori: k.kategori, label: labelKategori(k.kategori), posisi: k.posisi }));
+}
+const fotoTersedia = daftar => daftar.filter(f => f.src && !fotoRusak.has(f.src));
+
+/* ---------- Navbar ---------- */
+const navbar = document.getElementById("navbar");
+const menuTombol = document.getElementById("menuTombol");
+const menuNav = document.getElementById("menuNav");
+
+function setMenu(buka) {
+  navbar.classList.toggle("menu-buka", buka);
+  menuTombol.setAttribute("aria-expanded", String(buka));
+  menuTombol.setAttribute("aria-label", buka ? "Tutup menu" : "Buka menu");
+}
+menuTombol.addEventListener("click", () => setMenu(!navbar.classList.contains("menu-buka")));
+menuNav.querySelectorAll("a").forEach(a => a.addEventListener("click", () => setMenu(false)));
+
+/* Navbar jadi solid saat halaman digulir + tombol kembali ke atas */
+const keAtas = document.getElementById("keAtas");
+function saatGulir() {
+  navbar.classList.toggle("menempel", window.scrollY > 40);
+  keAtas.hidden = window.scrollY < 600;
+}
+window.addEventListener("scroll", saatGulir, { passive: true });
+saatGulir();
+keAtas.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+/* Menandai menu yang sesuai dengan bagian yang sedang dilihat */
+const bagianIds = ["beranda", "profil", "visi-misi", "fasilitas", "ekstrakurikuler", "spmb", "galeri", "kontak"];
+function tandaiMenuAktif() {
+  let aktif = bagianIds[0];
+  bagianIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && el.getBoundingClientRect().top <= window.innerHeight * 0.35) aktif = id;
+  });
+  menuNav.querySelectorAll("a").forEach(a => a.classList.toggle("aktif", a.getAttribute("href") === "#" + aktif));
+}
+window.addEventListener("scroll", tandaiMenuAktif, { passive: true });
+tandaiMenuAktif();
+
+/* ---------- Lightbox (foto diperbesar + galeri khusus) ---------- */
+const lightbox = document.getElementById("lightbox");
+const lbGambar = document.getElementById("lbGambar");
+const lbNama = document.getElementById("lbNama");
+const lbInfo = document.getElementById("lbInfo");
+const lbThumbs = document.getElementById("lbThumbs");
+let lbDaftar = [];       /* foto yang sedang ditampilkan di lightbox */
+let lbIndeks = 0;
+let lbFokusAwal = null;
+
+function isiLightbox() {
+  const f = lbDaftar[lbIndeks];
+  lbGambar.src = f.src;
+  lbGambar.alt = f.nama;
+  lbNama.textContent = f.nama;
+  lbInfo.textContent = f.label + "  •  " + (lbIndeks + 1) + " dari " + lbDaftar.length;
+  lbThumbs.querySelectorAll("button").forEach((b, i) => {
+    const aktif = i === lbIndeks;
+    b.setAttribute("aria-current", String(aktif));
+    if (aktif) b.scrollIntoView({ block: "nearest", inline: "center" });
+  });
+}
+
+/* daftar : array foto {src, nama, label}
+   indeks : foto yang dibuka lebih dulu
+   denganThumbs : true untuk galeri khusus (menampilkan deretan foto kecil) */
+function bukaLightbox(daftar, indeks, denganThumbs) {
+  lbDaftar = fotoTersedia(daftar);
+  if (!lbDaftar.length) return;
+  const target = daftar[indeks];
+  lbIndeks = Math.max(0, lbDaftar.indexOf(target));
+  lbFokusAwal = document.activeElement;
+
+  lbThumbs.replaceChildren();
+  lbThumbs.hidden = !(denganThumbs && lbDaftar.length > 1);
+  if (!lbThumbs.hidden) {
+    lbDaftar.forEach((f, i) => {
+      const t = buat("button", { type: "button", "aria-label": "Foto " + (i + 1) + ": " + f.nama }, buat("img", { src: f.src, alt: "", loading: "lazy" }));
+      t.addEventListener("click", () => { lbIndeks = i; isiLightbox(); });
+      lbThumbs.append(t);
+    });
+  }
+  isiLightbox();
+  lightbox.hidden = false;
+  lightbox.classList.add("terbuka");
+  document.body.style.overflow = "hidden";
+  document.getElementById("lbTutup").focus();
+}
+
+function tutupLightbox() {
+  lightbox.hidden = true;
+  lightbox.classList.remove("terbuka");
+  lbGambar.removeAttribute("src");
+  document.body.style.overflow = "";
+  if (lbFokusAwal) lbFokusAwal.focus();
+}
+
+function geserLightbox(arah) {
+  lbIndeks = (lbIndeks + arah + lbDaftar.length) % lbDaftar.length;
+  isiLightbox();
+}
+
+/* Jika file foto di lightbox tidak ditemukan, beri tahu pengunjung */
+lbGambar.addEventListener("error", () => {
+  if (!lbGambar.getAttribute("src")) return;
+  lbInfo.textContent = "Foto tidak ditemukan. Periksa nama file dan folder images.";
+});
+
+document.getElementById("lbTutup").addEventListener("click", tutupLightbox);
+document.getElementById("lbSebelumnya").addEventListener("click", () => geserLightbox(-1));
+document.getElementById("lbBerikutnya").addEventListener("click", () => geserLightbox(1));
+/* Klik area gelap di luar foto = tutup */
+lightbox.addEventListener("click", e => { if (e.target === lightbox || e.target.classList.contains("lb-figur")) tutupLightbox(); });
+/* Keyboard: Esc tutup, panah kiri/kanan pindah foto */
+document.addEventListener("keydown", e => {
+  if (!lightbox.classList.contains("terbuka")) return;
+  if (e.key === "Escape") tutupLightbox();
+  if (e.key === "ArrowLeft") geserLightbox(-1);
+  if (e.key === "ArrowRight") geserLightbox(1);
+});
+/* Geser jari di HP */
+let sentuhAwal = null;
+lightbox.addEventListener("touchstart", e => { sentuhAwal = e.changedTouches[0].clientX; }, { passive: true });
+lightbox.addEventListener("touchend", e => {
+  if (sentuhAwal === null) return;
+  const selisih = e.changedTouches[0].clientX - sentuhAwal;
+  if (Math.abs(selisih) > 50) geserLightbox(selisih > 0 ? -1 : 1);
+  sentuhAwal = null;
+}, { passive: true });
+
+/* ---------- Kartu (fasilitas dan ekskul) ---------- */
+
+/* Membuat kartu yang bisa diklik untuk membuka galeri khusus */
+function buatKartu(opsi) {
+  const foto = [].concat(...opsi.koleksi.map(id => fotoKoleksi(cariKoleksi(id)))).filter(f => f.src);
+  const pertama = id => { const k = cariKoleksi(id); return k && { src: k.foto[0], nama: k.nama, posisi: k.posisi }; };
+
+  let tampilan;
+  if (opsi.kolase) {
+    /* Beberapa foto sebagai kolase: satu besar dan dua kecil */
+    const bagian = opsi.koleksi.slice(0, 3).map(pertama).filter(Boolean);
+    tampilan = buat("div", { class: "kolase" }, bagian.map(b => buatGambar(b.src, b.nama, b.posisi)));
+  } else {
+    const k = cariKoleksi(opsi.koleksi[0]);
+    tampilan = buatGambar(k && k.foto[0], opsi.nama, k && k.posisi);
+  }
+
+  const isi = buat("div", { class: "kartu-isi" });
+  isi.append(buat("h3", { teks: opsi.nama }), buat("p", { teks: opsi.deskripsi }));
+  if (opsi.daftar) isi.append(buat("ul", { class: "chip-daftar" }, opsi.daftar.map(n => buat("li", { teks: n }))));
+
+  const lencana = buat("span", { class: "lencana", teks: foto.length ? foto.length + " foto" : "Belum ada foto" });
+  const kartu = buat("article", {
+    class: "kartu kartu-klik reveal", role: "button", tabindex: "0",
+    "aria-label": "Buka galeri " + opsi.nama + (foto.length ? ", " + foto.length + " foto" : "")
+  }, [buat("div", { class: "kartu-foto" }, [tampilan, lencana]), isi]);
+
+  function buka() {
+    if (!fotoTersedia(foto).length) return;
+    bukaLightbox(foto, 0, true);
+  }
+  kartu.addEventListener("click", buka);
+  kartu.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); buka(); } });
+  return kartu;
+}
+
+function tampilkanFasilitas() {
+  const wadah = document.getElementById("fasilitasDaftar");
+  KARTU_FASILITAS.forEach(f => wadah.append(buatKartu({
+    nama: f.nama, deskripsi: f.deskripsi, daftar: f.daftar, koleksi: f.koleksi, kolase: f.koleksi.length > 1
+  })));
+}
+
+function tampilkanEkskul() {
+  const wadah = document.getElementById("ekskulDaftar");
+  KARTU_EKSKUL.forEach(e => {
+    const k = cariKoleksi(e.id);
+    wadah.append(buatKartu({ nama: k.nama, deskripsi: e.deskripsi, koleksi: [e.id] }));
+  });
+}
+
+/* ---------- Galeri utama: filter + tampilkan lebih banyak ---------- */
+const galeriGrid = document.getElementById("galeriGrid");
+const galeriFilter = document.getElementById("galeriFilter");
+const galeriLainnya = document.getElementById("galeriLainnya");
+const galeriKosong = document.getElementById("galeriKosong");
+let kategoriAktif = "semua";
+let batasTampil = FOTO_PER_HALAMAN;
+
+/* Setiap foto menjadi satu item galeri */
+const semuaFoto = [].concat(...KOLEKSI.map(fotoKoleksi));
+
+function fotoCocok() {
+  return semuaFoto.filter(f => kategoriAktif === "semua" || f.kategori === kategoriAktif);
+}
+
+function tampilkanGaleri() {
+  const cocok = fotoCocok();
+  const tampil = cocok.slice(0, batasTampil);
+  galeriGrid.replaceChildren();
+
+  tampil.forEach((f, i) => {
+    const item = buat("button", { type: "button", class: "galeri-item", "aria-label": "Perbesar foto " + f.nama });
+    item.style.animationDelay = Math.min(i % FOTO_PER_HALAMAN * 30, 300) + "ms";
+    item.append(buatGambar(f.src, f.nama, f.posisi));
+    item.append(buat("span", { class: "galeri-cap" }, [f.nama, buat("small", { teks: f.label })]));
+    item.addEventListener("click", () => bukaLightbox(cocok, cocok.indexOf(f), false));
+    galeriGrid.append(item);
+  });
+
+  /* Pesan jika kategori belum punya foto */
+  galeriKosong.hidden = cocok.length > 0;
+  galeriKosong.textContent = "Belum ada foto untuk kategori ini.";
+
+  /* Tombol tampilkan lebih banyak */
+  const sisa = cocok.length - tampil.length;
+  galeriLainnya.hidden = sisa <= 0;
+  galeriLainnya.textContent = "Tampilkan lebih banyak (" + sisa + " foto lagi)";
+}
+
+function buatFilter() {
+  KATEGORI.forEach(k => {
+    const jumlah = semuaFoto.filter(f => k.kunci === "semua" || f.kategori === k.kunci).length;
+    const tombol = buat("button", { type: "button", "aria-pressed": String(k.kunci === kategoriAktif) }, [k.label, buat("span", { teks: jumlah })]);
+    tombol.addEventListener("click", () => {
+      kategoriAktif = k.kunci;
+      batasTampil = FOTO_PER_HALAMAN;
+      galeriFilter.querySelectorAll("button").forEach(b => b.setAttribute("aria-pressed", String(b === tombol)));
+      tampilkanGaleri();
+    });
+    galeriFilter.append(tombol);
+  });
+}
+galeriLainnya.addEventListener("click", () => { batasTampil += FOTO_PER_HALAMAN; tampilkanGaleri(); });
+
+/* ---------- Animasi muncul saat digulir ---------- */
+function aktifkanReveal() {
+  const targets = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) { targets.forEach(t => t.classList.add("terlihat")); return; }
+  const pengamat = new IntersectionObserver(entri => {
+    entri.forEach(en => { if (en.isIntersecting) { en.target.classList.add("terlihat"); pengamat.unobserve(en.target); } });
+  }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+  targets.forEach(t => pengamat.observe(t));
+}
+
+/* Foto statis di index.html (logo, hero, profil): jika gagal, tidak perlu placeholder,
+   cukup disembunyikan agar tidak muncul ikon gambar rusak */
+document.querySelectorAll(".hero-latar, .hero-foto img, .profil-foto img").forEach(img => {
+  img.addEventListener("error", () => { img.style.visibility = "hidden"; });
+});
+
+/* ---------- Jalankan semuanya ---------- */
+document.getElementById("tahun").textContent = new Date().getFullYear();
+tampilkanFasilitas();
+tampilkanEkskul();
+buatFilter();
+tampilkanGaleri();
+aktifkanReveal();
+
+</script>
+
+</body></html>
